@@ -194,3 +194,35 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 # End of https://www.gitignore.io/api/node,code,rider,linux,dotnetcore
+
+src/api/Api/obj/Debug/netcoreapp2.2/
+
+src/api/Api/obj/
+
+src/api/Business/obj/Debug/netcoreapp2.2/
+
+src/api/Business/obj/
+
+src/api/.idea/.idea.Gatel/
+
+src/api/Exceptions/bin/Debug/netcoreapp2.2/
+
+src/api/Exceptions/obj/Debug/netcoreapp2.2/
+
+src/api/Exceptions/obj/
+
+src/api/Model/bin/Debug/netcoreapp2.2/
+
+src/api/Model/obj/Debug/netcoreapp2.2/
+
+src/api/Model/obj/
+
+src/api/Repository/obj/Debug/netcoreapp2.2/
+
+src/api/Repository/obj/
+
+src/api/Tests/bin/Debug/netcoreapp2.2/
+
+src/api/Tests/obj/Debug/netcoreapp2.2/
+
+src/api/Tests/obj/
