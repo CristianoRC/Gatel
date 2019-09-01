@@ -1,36 +1,44 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
+  <v-app app>
+    <v-app-bar app color="primary" dark>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Gatel</v-toolbar-title>
+      <div class="flex-grow-1"></div>
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </v-app-bar>
-
     <v-content>
-      <HelloWorld/>
+      <v-navigation-drawer v-model="drawer" app absolute bottom temporary>
+        <v-list nav dense>
+          <v-list-item-group
+            v-for="page in pages"
+            :key="page"
+            active-class="deep-purple--text text--accent-4"
+          >
+            <v-list-item @click="to(page.name)">
+              <v-list-item-title>{{page.title}}</v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
+
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
-  name: 'Gatel',
-  components: {
-    HelloWorld,
-  },
+  name: "Gatel",
   data: () => ({
-    //
+    drawer: false,
+    pages: [{ title: "Home", name: "home" }, { title: "Sobre", name: "about" }]
   }),
+  methods: {
+    to(route) {
+      this.$router.push({ name: route });
+    }
+  }
 };
 </script>
