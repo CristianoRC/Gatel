@@ -7,6 +7,7 @@ namespace Tests.ValueObjects
     public class EmailTests
     {
         [Theory]
+        [InlineData("")]
         [InlineData("sadfsfdg")]
         [InlineData("sadfsfdg.")]
         [InlineData("sadfsfdg@")]

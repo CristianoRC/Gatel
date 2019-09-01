@@ -8,10 +8,10 @@ namespace Model.ValueObjects
     {
         public Email(string address)
         {
-            Address = address;
-
             var emailRegex = new Regex(GetEmailPattern());
-            if (!emailRegex.IsMatch(address))
+            if (emailRegex.IsMatch(address))
+                Address = address;
+            else
                 throw new InvalidEmailException($"O email ${address} não é válido");
         }
 

@@ -42,6 +42,7 @@
       <e p="Exceptions" t="IncludeRecursive">
         <e p="Exceptions.csproj" t="IncludeRecursive" />
         <e p="InvalidEmailException.cs" t="Include" />
+        <e p="InvalidPlateException.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -56,6 +57,7 @@
         <e p="Model.csproj" t="IncludeRecursive" />
         <e p="ValueObjects" t="Include">
           <e p="Email.cs" t="Include" />
+          <e p="Plate.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
@@ -81,6 +83,7 @@
         <e p="Tests.csproj" t="IncludeRecursive" />
         <e p="ValueObjects" t="Include">
           <e p="EmailTests.cs" t="Include" />
+          <e p="PlateTests.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
