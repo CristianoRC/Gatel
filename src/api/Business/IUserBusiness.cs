@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 using Model.Dto;
@@ -8,7 +9,7 @@ namespace Business
     {
         Task Create(CreateUserDto user);
 
-        Task<User[]> GetAll();
+        Task<IEnumerable<User>> GetAll();
 
         Task GetById(int userId);
 

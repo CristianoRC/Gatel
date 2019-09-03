@@ -4,6 +4,7 @@ using Business;
 using Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Model.Dto;
+using Npgsql;
 
 namespace Api
 {
@@ -30,6 +31,12 @@ namespace Api
             {
                 return BadRequest(e.Message);
             }
+            catch (PostgresException e)
+            {
+                if (e.Message.Contains("23505"))
+                    return BadRequest("Já existe um usuário com o messmo email!");
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet]
@@ -41,15 +48,29 @@ namespace Api
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser([FromRoute] int userId)
         {
-            await _userBusiness.GetById(userId);
-            return Ok();
+            try
+            {
+                await _userBusiness.GetById(userId);
+                return Ok();
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser([FromRoute] int id)
         {
-            await _userBusiness.DeleteUser(id);
-            return Ok();
+            try
+            {
+                await _userBusiness.DeleteUser(id);
+                return Ok();
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut("{id}")]
@@ -63,6 +84,12 @@ namespace Api
             }
             catch (InvalidEmailException e)
             {
+                return BadRequest(e.Message);
+            }
+            catch (PostgresException e)
+            {
+                if (e.Message.Contains("23505"))
+                    return BadRequest("Já existe um usuário com o messmo email!");
                 return BadRequest(e.Message);
             }
         }

@@ -60,6 +60,7 @@
       <e p="Model" t="IncludeRecursive">
         <e p="Dto" t="Include">
           <e p="CreateUserDTO.cs" t="Include" />
+          <e p="UserQuery.cs" t="Include" />
         </e>
         <e p="Model.csproj" t="IncludeRecursive" />
         <e p="User.cs" t="Include" />
@@ -77,7 +78,11 @@
         </e>
       </e>
       <e p="Repository" t="IncludeRecursive">
+        <e p="BaseRepository.cs" t="Include" />
+        <e p="IUserRepository.cs" t="Include" />
         <e p="Repository.csproj" t="IncludeRecursive" />
+        <e p="RepositoryDependencyInjection.cs" t="Include" />
+        <e p="UserRepository.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

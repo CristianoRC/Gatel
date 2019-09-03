@@ -1,38 +1,55 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 using Model.Dto;
+using Repository;
 
 namespace Business
 {
     class UserBusiness : IUserBusiness
     {
+        private readonly IUserRepository _userRepository;
+
+        //TODO: Validar os dados do usuário antes de mandar para o repository
+        public UserBusiness(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
         public async Task Create(CreateUserDto userDto)
         {
             var user = new User(userDto);
+            await _userRepository.Create(user);
         }
 
-        public async Task<User[]> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
-            throw new System.NotImplementedException();
+            return await _userRepository.GetAllUsers();
         }
 
-        public Task GetById(int userId)
+        public async Task GetById(int userId)
         {
-            throw new System.NotImplementedException();
+            if (userId < 0)
+                throw new ArgumentException("Id do usuário inválido");
+
+            await _userRepository.GetById(userId);
         }
 
         public async Task<User> UpdateData(CreateUserDto userDto, int id)
         {
-            var user = new User(userDto);
-            user.Id = id;
+            var user = new User(userDto) {Id = id};
 
-            throw new NotImplementedException();
+            return await _userRepository.UpdateData(user);
         }
 
-        public async Task DeleteUser(int id)
+        public async Task DeleteUser(int userId)
         {
-            throw new NotImplementedException();
+            if (userId < 0)
+                throw new ArgumentException("Id do usuário inválido");
+
+            await _userRepository.DeleteUser(userId);
         }
     }
 }

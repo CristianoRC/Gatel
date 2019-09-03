@@ -30,6 +30,16 @@ namespace Model
             PassWord = userDto.PassWord;
         }
 
+        public User(string name, string email, string phone, string apartament, bool isAdmin)
+        {
+            IsDeleted = false;
+            IsAdmin = isAdmin;
+            Name = name;
+            Email = new Email(email);
+            Phone = phone;
+            Apartament = apartament;
+        }
+
         public int Id { get; set; }
 
         [Required] public string Name { get; set; }

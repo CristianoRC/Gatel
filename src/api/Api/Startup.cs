@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Repository;
 
 namespace Api
 {
@@ -18,6 +19,7 @@ namespace Api
 
     public void ConfigureServices(IServiceCollection services)
     {
+      services.InjectRepository();
       services.InjectBusiness();
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
     }
