@@ -14,4 +14,20 @@
     <ProjectReference Include="..\Business\Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="User\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="User\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="User\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="User\**" />
+  </ItemGroup>
+
 </Project>

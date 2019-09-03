@@ -1,6 +1,6 @@
 <template>
   <v-app app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar v-if="$route.name !== 'login'" app color="primary" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Gatel</v-toolbar-title>
       <div class="flex-grow-1"></div>
