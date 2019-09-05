@@ -45,17 +45,20 @@ namespace Api
             return Ok(await _userBusiness.GetAll());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{userId}")]
         public async Task<IActionResult> GetUser([FromRoute] int userId)
         {
             try
             {
-                await _userBusiness.GetById(userId);
-                return Ok();
+                return Ok(await _userBusiness.GetById(userId));
             }
             catch (ArgumentException e)
             {
                 return BadRequest(e.Message);
+            }
+            catch (InvalidOperationException)
+            {
+                return NoContent();
             }
         }
 

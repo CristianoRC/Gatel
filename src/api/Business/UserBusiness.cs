@@ -29,12 +29,12 @@ namespace Business
             return await _userRepository.GetAllUsers();
         }
 
-        public async Task GetById(int userId)
+        public async Task<User> GetById(int userId)
         {
             if (userId < 0)
                 throw new ArgumentException("Id do usuário inválido");
 
-            await _userRepository.GetById(userId);
+            return await _userRepository.GetById(userId);
         }
 
         public async Task<User> UpdateData(CreateUserDto userDto, int id)

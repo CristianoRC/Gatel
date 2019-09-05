@@ -11,7 +11,7 @@ namespace Business
 
         Task<IEnumerable<User>> GetAll();
 
-        Task GetById(int userId);
+        Task<User> GetById(int userId);
 
         Task<User> UpdateData(CreateUserDto user, int id);
 

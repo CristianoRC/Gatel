@@ -19,6 +19,10 @@ namespace Model
             IsAdmin = isAdmin;
         }
 
+        public User()
+        {
+        }
+
         public User(CreateUserDto userDto)
         {
             Apartament = userDto.Apartament;
@@ -28,6 +32,18 @@ namespace Model
             IsAdmin = userDto.IsAdmin;
             IsDeleted = false;
             PassWord = userDto.PassWord;
+        }
+
+        public User(UserQuery userQuery)
+        {
+            Name = userQuery.Name;
+            Email = new Email(userQuery.Email);
+            Apartament = userQuery.Apartament;
+            Id = userQuery.Id;
+            Phone = userQuery.Name;
+            IsAdmin = userQuery.IsAdmin;
+            IsDeleted = false;
+            PassWord = userQuery.PassWord;
         }
 
         public User(string name, string email, string phone, string apartament, bool isAdmin)

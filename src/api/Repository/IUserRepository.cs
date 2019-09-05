@@ -10,7 +10,7 @@ namespace Repository
 
         Task<IEnumerable<User>> GetAllUsers();
         
-        Task GetById(int userId);
+        Task<User> GetById(int userId);
 
         Task<User> UpdateData(User user);
 

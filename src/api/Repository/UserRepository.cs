@@ -47,17 +47,26 @@ namespace Repository
 
                 foreach (var user in users)
                 {
-                    usersConverted.Add(new User(user.Id, user.Name, new Email(user.Email),
-                        user.PassWord, user.Apartament, user.Phone, false, user.IsAdmin));
+                    usersConverted.Add(new User(user));
                 }
             }
 
             return usersConverted;
         }
 
-        public Task GetById(int userId)
+        public async Task<User> GetById(int userId)
         {
-            throw new System.NotImplementedException();
+            const string sql =
+                "select id, name, email, phone,apartament, isAdmin from public.user where isDeleted = false and id = @userId";
+
+            using (var connection = GetConnection())
+            {
+                await connection.OpenAsync();
+
+                var userQueryResult = await connection.QueryFirstAsync<UserQuery>(sql, new {userId});
+
+                return new User(userQueryResult);
+            }
         }
 
         public Task<User> UpdateData(User user)
