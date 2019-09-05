@@ -74,9 +74,18 @@ namespace Repository
             throw new System.NotImplementedException();
         }
 
-        public Task DeleteUser(int id)
+        public async Task DeleteUser(int id)
         {
-            throw new System.NotImplementedException();
+            const string sql = "update public.user set isDeleted=true where id = @Id";
+
+            using (var connection = GetConnection())
+            {
+                await connection.OpenAsync();
+
+                await connection.ExecuteAsync(sql, new {Id = id});
+
+                connection.Close();
+            }
         }
     }
 }
