@@ -40,7 +40,7 @@ namespace Model
             Email = new Email(userQuery.Email);
             Apartament = userQuery.Apartament;
             Id = userQuery.Id;
-            Phone = userQuery.Name;
+            Phone = userQuery.Phone;
             IsAdmin = userQuery.IsAdmin;
             IsDeleted = false;
             PassWord = userQuery.PassWord;

@@ -13,7 +13,7 @@ namespace Business
 
         Task<User> GetById(int userId);
 
-        Task<User> UpdateData(CreateUserDto user, int id);
+        Task UpdateData(UpdateUserDTO user, int id);
 
         Task DeleteUser(int id);
     }

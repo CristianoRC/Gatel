@@ -37,11 +37,9 @@ namespace Business
             return await _userRepository.GetById(userId);
         }
 
-        public async Task<User> UpdateData(CreateUserDto userDto, int id)
+        public async Task UpdateData(UpdateUserDTO userDto, int id)
         {
-            var user = new User(userDto) {Id = id};
-
-            return await _userRepository.UpdateData(user);
+            await _userRepository.UpdateData(userDto, id);
         }
 
         public async Task DeleteUser(int userId)

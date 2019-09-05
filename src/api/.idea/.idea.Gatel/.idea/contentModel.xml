@@ -60,6 +60,7 @@
       <e p="Model" t="IncludeRecursive">
         <e p="Dto" t="Include">
           <e p="CreateUserDTO.cs" t="Include" />
+          <e p="UpdateUserDTO.cs" t="Include" />
           <e p="UserQuery.cs" t="Include" />
         </e>
         <e p="Model.csproj" t="IncludeRecursive" />

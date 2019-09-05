@@ -69,9 +69,26 @@ namespace Repository
             }
         }
 
-        public Task<User> UpdateData(User user)
+        public async Task UpdateData(UpdateUserDTO user, int id)
         {
-            throw new System.NotImplementedException();
+            const string sql =
+                @"update public.user set name = @Name, apartament = @Apartament, phone = @Phone where Id = @Id";
+
+            using (var connection = GetConnection())
+            {
+                await connection.OpenAsync();
+
+                await connection.ExecuteAsync(sql,
+                    new
+                    {
+                        user.Name,
+                        user.Apartament,
+                        user.Phone,
+                        Id = id
+                    });
+
+                connection.Close();
+            }
         }
 
         public async Task DeleteUser(int id)

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
+using Model.Dto;
 
 namespace Repository
 {
@@ -12,7 +13,7 @@ namespace Repository
         
         Task<User> GetById(int userId);
 
-        Task<User> UpdateData(User user);
+        Task UpdateData(UpdateUserDTO user,int id);
 
         Task DeleteUser(int id);
     }

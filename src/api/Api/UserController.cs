@@ -77,7 +77,7 @@ namespace Api
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser([FromRoute] int id, [FromBody] CreateUserDto userDto)
+        public async Task<IActionResult> UpdateUser([FromRoute] int id, [FromBody] UpdateUserDTO userDto)
         {
             try
             {
