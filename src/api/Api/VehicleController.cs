@@ -35,5 +35,19 @@ namespace Api
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpDelete("{plate}")]
+        public async Task<IActionResult> Delete([FromRoute] string plate)
+        {
+            try
+            {
+                await _vehicleBusiness.DeleteVehicle(plate);
+                return Ok();
+            }
+            catch (InvalidPlateException)
+            {
+                return BadRequest("A plca informada não está correta!");
+            }
+        }
     }
 }

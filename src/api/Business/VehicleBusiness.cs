@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Model;
 using Model.Dto;
+using Model.ValueObjects;
 using Repository;
 
 namespace Business
@@ -27,7 +28,7 @@ namespace Business
 
         public async Task DeleteVehicle(string plate)
         {
-            throw new System.NotImplementedException();
+            await _vehicleRepository.DeleteVehicle(new Plate(plate));
         }
     }
 }
