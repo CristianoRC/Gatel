@@ -7,6 +7,7 @@ namespace Business
         public static void InjectBusiness(this IServiceCollection services)
         {
             services.AddTransient<IUserBusiness, UserBusiness>();
+            services.AddTransient<IVehicleBusiness, VehicleBusiness>();
         }
     }
 }

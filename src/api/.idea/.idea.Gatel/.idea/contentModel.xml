@@ -18,6 +18,7 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="UserController.cs" t="Include" />
+        <e p="VehicleController.cs" t="Include" />
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
@@ -33,7 +34,9 @@
         <e p="Business.csproj" t="IncludeRecursive" />
         <e p="BusinessDependencyInjection.cs" t="Include" />
         <e p="IUserBusiness.cs" t="Include" />
+        <e p="IVehicleBusiness.cs" t="Include" />
         <e p="UserBusiness.cs" t="Include" />
+        <e p="VehicleBusiness.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -60,6 +63,7 @@
       <e p="Model" t="IncludeRecursive">
         <e p="Dto" t="Include">
           <e p="CreateUserDTO.cs" t="Include" />
+          <e p="CreateVehicleDTO.cs" t="Include" />
           <e p="UpdateUserDTO.cs" t="Include" />
           <e p="UserQuery.cs" t="Include" />
         </e>
@@ -69,6 +73,7 @@
           <e p="Email.cs" t="Include" />
           <e p="Plate.cs" t="Include" />
         </e>
+        <e p="Vehicle.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -81,9 +86,11 @@
       <e p="Repository" t="IncludeRecursive">
         <e p="BaseRepository.cs" t="Include" />
         <e p="IUserRepository.cs" t="Include" />
+        <e p="IVehicleRepository.cs" t="Include" />
         <e p="Repository.csproj" t="IncludeRecursive" />
         <e p="RepositoryDependencyInjection.cs" t="Include" />
         <e p="UserRepository.cs" t="Include" />
+        <e p="VehicleRepository.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

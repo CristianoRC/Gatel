@@ -9,6 +9,7 @@ using Npgsql;
 namespace Api
 {
     [Route("/api/user/")]
+    [ApiController]
     public class UserController : Controller
     {
         private readonly IUserBusiness _userBusiness;
