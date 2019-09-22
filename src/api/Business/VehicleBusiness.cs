@@ -18,7 +18,7 @@ namespace Business
 
         public async Task CreateVehicle(CreateVehicleDTO vehicleDto)
         {
-            var vehicle = new Vehicle(vehicleDto);
+            var vehicle = Vehicle.FromCreateDto(vehicleDto);
 
             if (vehicle.IsValid())
                 await _vehicleRepository.CreateVehicle(vehicle);

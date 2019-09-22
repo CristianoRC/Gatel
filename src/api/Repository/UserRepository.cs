@@ -47,7 +47,7 @@ namespace Repository
 
                 foreach (var user in users)
                 {
-                    usersConverted.Add(new User(user));
+                    usersConverted.Add(User.FromUserQuery(user));
                 }
             }
 
@@ -65,7 +65,7 @@ namespace Repository
 
                 var userQueryResult = await connection.QueryFirstAsync<UserQuery>(sql, new {userId});
 
-                return new User(userQueryResult);
+                return User.FromUserQuery(userQueryResult);
             }
         }
 

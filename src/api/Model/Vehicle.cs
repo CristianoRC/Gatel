@@ -25,7 +25,7 @@ namespace Model
             UserId = userId;
         }
 
-        public Vehicle(CreateVehicleDTO vehicleDto)
+        private Vehicle(CreateVehicleDTO vehicleDto)
         {
             Plate = new Plate(vehicleDto.Plate);
             Color = vehicleDto.Color;
@@ -33,6 +33,11 @@ namespace Model
             Manufacturer = vehicleDto.Manufacturer;
             IsDeleted = false;
             UserId = vehicleDto.UserId;
+        }
+
+        public static Vehicle FromCreateDto(CreateVehicleDTO vehicleDto)
+        {
+            return new Vehicle(vehicleDto);
         }
 
         public Plate Plate { get; set; }

@@ -23,7 +23,7 @@ namespace Model
         {
         }
 
-        public User(CreateUserDto userDto)
+        private User(CreateUserDto userDto)
         {
             Apartament = userDto.Apartament;
             Email = new Email(userDto.Email);
@@ -34,7 +34,7 @@ namespace Model
             PassWord = userDto.PassWord;
         }
 
-        public User(UserQuery userQuery)
+        private User(UserQuery userQuery)
         {
             Name = userQuery.Name;
             Email = new Email(userQuery.Email);
@@ -54,6 +54,16 @@ namespace Model
             Email = new Email(email);
             Phone = phone;
             Apartament = apartament;
+        }
+
+        public static User FromUserQuery(UserQuery userQuery)
+        {
+            return new User(userQuery);
+        }
+
+        public static User FromCreateDto(CreateUserDto userDto)
+        {
+            return new User(userDto);
         }
 
         public int Id { get; set; }

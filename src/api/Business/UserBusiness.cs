@@ -20,7 +20,7 @@ namespace Business
 
         public async Task Create(CreateUserDto userDto)
         {
-            var user = new User(userDto);
+            var user = User.FromCreateDto(userDto);
             await _userRepository.Create(user);
         }
 
