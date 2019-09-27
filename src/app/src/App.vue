@@ -33,7 +33,11 @@ export default {
   name: "Gatel",
   data: () => ({
     drawer: false,
-    pages: [{ title: "Home", name: "home" }, { title: "Sobre", name: "about" }]
+    pages: [
+      { title: "Home", name: "home" },
+      { title: "Usuários", name: "users" },
+      { title: "Sobre", name: "about" }
+    ]
   }),
   methods: {
     to(route) {
