@@ -12,8 +12,8 @@
       <v-navigation-drawer v-model="drawer" app absolute bottom temporary>
         <v-list nav dense>
           <v-list-item-group
-            v-for="page in pages"
-            :key="page"
+            v-for="(page,index) in pages"
+            :key="index"
             active-class="deep-purple--text text--accent-4"
           >
             <v-list-item @click="to(page.name)">

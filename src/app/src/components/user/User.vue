@@ -1,17 +1,26 @@
 <template>
   <v-container grid-list-xs>
-    <v-layout row wrap>
-      <pre>{{users}}</pre>
-      <v-flex mt-5 offset-xs2 xs8>
-        <v-data-table :headers="headers" :items="users" :items-per-page="10" class="elevation-1"></v-data-table>
-      </v-flex>
-    </v-layout>
+    <v-card>
+      <v-card-title>
+        Usuários
+        <div class="flex-grow-1"></div>
+        <v-text-field v-model="search" label="Buscar" append-icon="search" single-line hide-details></v-text-field>
+      </v-card-title>
+      <v-data-table
+        :search="search"
+        :headers="headers"
+        :items="users"
+        :items-per-page="10"
+        class="elevation-1"
+      ></v-data-table>
+    </v-card>
   </v-container>
 </template>
 
 <script>
 export default {
   data: () => ({
+    search: "",
     headers: [
       { text: "#", value: "id" },
       { text: "Nome", value: "name" },
@@ -24,7 +33,7 @@ export default {
       const responseData = await this.$http.get(
         "https://localhost:5001/api/user"
       );
-      return responseData.body;
+      return responseData.data;
     }
   },
   async created() {
