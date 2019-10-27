@@ -20,11 +20,11 @@
 					label="Senha inicial"
 					required
 				></v-text-field>
-				<v-btn color="info" @click="generatePW" small flat>
+				<v-btn color="info" @click="generatePW" small>
 					Gerar senha aleatoria
 					<v-icon right dark>refresh</v-icon>
 				</v-btn>
-				<v-checkbox v-model="isAdmin" value="1" label="Admin" type="checkbox"></v-checkbox>
+				<v-switch v-model="isAdmin" label="Admin" type="checkbox"></v-switch>
 			</v-form>
 		</v-card-text>
 		<v-divider></v-divider>
@@ -68,7 +68,7 @@ export default {
 				passWord: this.password,
 				apartament: this.apartament,
 				phone: this.phone,
-				isAdmin: false
+				isAdmin: this.isAdmin
 			});
 		},
 		generatePW() {

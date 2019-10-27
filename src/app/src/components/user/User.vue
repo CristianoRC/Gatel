@@ -19,13 +19,21 @@
 				class="elevation-1"
 			>
 				<template v-slot:item.action="{ item }">
-					<v-icon small class="mr-2" color="info" @click="editItem(item)">edit</v-icon>
+					<v-icon small class="mr-2" color="info" @click="openDialogEdit(item)">edit</v-icon>
 					<v-icon small color="error" @click="deleteUser(item)">delete</v-icon>
 				</template>
 			</v-data-table>
 		</v-card>
-		<v-dialog persistent v-model="dialog" width="500">
-			<create-user v-if="dialog" @createUser="createUser" @close="closeDialog"></create-user>
+		<v-dialog persistent v-model="dialogCreate" width="500">
+			<create-user v-if="dialogCreate" @createUser="createUser" @close="closeDialog"></create-user>
+		</v-dialog>
+		<v-dialog persistent v-model="dialogEdit" width="500">
+			<edit-userinfo
+				:userData="userEditData"
+				v-if="dialogEdit"
+				@editUser="editUser"
+				@close="closeDialog"
+			></edit-userinfo>
 		</v-dialog>
 	</v-container>
 </template>
@@ -45,7 +53,8 @@ export default {
 			{ text: "Actions", value: "action", sortable: false }
 		],
 		users: [],
-		dialog: false,
+		dialogCreate: false,
+		dialogEdit: false,
 		userEditData: {}
 	}),
 	methods: {
@@ -69,14 +78,20 @@ export default {
 			this.users.splice(userIndex, 1);
 		},
 		closeDialog() {
-			this.dialog = false;
+			this.dialogEdit = false;
+			this.dialogCreate = false;
+			this.userEditData = {};
 		},
-		openDialog() {
-			this.dialog = true;
+		openDialog(create) {
+			this.dialogCreate = true;
+		},
+		openDialogEdit(userInfo) {
+			this.userEditData = userInfo;
+			this.dialogEdit = true;
 		},
 		async createUser(userData) {
+			this.closeDialog();
 			try {
-				this.closeDialog();
 				const response = await this.$http.post(urls.user.create, userData);
 				alert("Usuário criado com sucesso");
 				this.users = await this.getAllUsers();
@@ -85,6 +100,21 @@ export default {
 					? alert(error.response.data)
 					: alert("Não foi possível cadastrar");
 			}
+		},
+		async editUser(userData) {
+			this.closeDialog();
+			try {
+				await this.$http.put(
+					urls.user.edit.replace("@id", userData.id),
+					userData
+				);
+				alert("Usuário editado com sucesso");
+				this.users = await this.getAllUsers();
+			} catch (error) {
+				error.response.data
+					? alert(error.response.data)
+					: alert("Não foi possível editar");
+			}
 		}
 	},
 	async created() {
@@ -92,7 +122,7 @@ export default {
 	},
 	components: {
 		createUser,
-		edirUser
+		editUserinfo: edirUser
 	}
 };
 </script>

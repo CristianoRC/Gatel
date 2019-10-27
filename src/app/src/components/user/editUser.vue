@@ -1,11 +1,11 @@
 <template>
 	<v-card>
-		<v-card-title primary-title>Cliente</v-card-title>
+		<v-card-title primary-title>Cliente - Editar</v-card-title>
 		<v-divider></v-divider>
 		<v-card-text>
 			<v-form v-model="formIsValid" ref="form">
 				<v-text-field :rules="[rules.required]" v-model="name" label="nome" required></v-text-field>
-				<v-text-field :rules="[rules.emailMatch]" v-model="email" label="E-mail" required></v-text-field>
+				<v-text-field readonly :rules="[rules.emailMatch]" v-model="email" label="E-mail" required></v-text-field>
 				<v-text-field :rules="[rules.required]" v-model="apartament" label="Apartamento" required></v-text-field>
 				<v-text-field
 					:rules="[rules.required]"
@@ -14,24 +14,14 @@
 					label="Celular"
 					required
 				></v-text-field>
-				<v-text-field
-					:rules="[rules.required, rules.min]"
-					v-model="password"
-					label="Senha inicial"
-					required
-				></v-text-field>
-				<v-btn color="info" @click="generatePW" small flat>
-					Gerar senha aleatoria
-					<v-icon right dark>refresh</v-icon>
-				</v-btn>
-				<v-checkbox v-model="isAdmin" value="1" label="Admin" type="checkbox"></v-checkbox>
+				<v-switch v-model="isAdmin" label="Admin" type="checkbox"></v-switch>
 			</v-form>
 		</v-card-text>
 		<v-divider></v-divider>
 		<v-card-actions>
 			<v-spacer></v-spacer>
 			<v-btn @click="closeDialog()" small color="error">Cancelar</v-btn>
-			<v-btn :disabled="!formIsValid" @click="createUser()" small color="success">
+			<v-btn :disabled="!formIsValid" @click="editUser()" small color="success">
 				Salvar
 				<v-icon right dark>save</v-icon>
 			</v-btn>
@@ -41,7 +31,6 @@
 
 <script>
 import rules from "../../rules";
-import generator from "random-password";
 
 export default {
 	data: () => {
@@ -50,7 +39,6 @@ export default {
 			email: "",
 			phone: "",
 			apartament: "",
-			password: "",
 			isAdmin: false,
 			maskPhone: "(##) #####-####",
 			rules: rules,
@@ -61,19 +49,28 @@ export default {
 		closeDialog() {
 			this.$emit("close");
 		},
-		createUser() {
-			this.$emit("createUser", {
+		editUser() {
+			this.$emit("editUser", {
 				name: this.name,
-				email: this.email,
-				passWord: this.password,
 				apartament: this.apartament,
 				phone: this.phone,
-				isAdmin: false
+				isAdmin: this.isAdmin,
+				id: this.userData.id
 			});
-		},
-		generatePW() {
-			this.password = generator(8);
 		}
+	},
+	props: {
+		userData: {
+			required: true,
+			type: Object
+		}
+	},
+	created() {
+		this.name = this.userData.name;
+		this.email = this.userData.email.address;
+		this.phone = this.userData.phone;
+		this.apartament = this.userData.apartament;
+		this.isAdmin = this.userData.isAdmin;
 	}
 };
 </script>
