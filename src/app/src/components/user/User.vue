@@ -25,14 +25,16 @@
 			</v-data-table>
 		</v-card>
 		<v-dialog persistent v-model="dialog" width="500">
-			<user-info v-if="dialog" @createUser="createUser" @close="closeDialog"></user-info>
+			<create-user v-if="dialog" @createUser="createUser" @close="closeDialog"></create-user>
 		</v-dialog>
 	</v-container>
 </template>
 
 <script>
 import urls from "../../urls";
-import userInfo from "./userInfo";
+import createUser from "./createUser";
+import edirUser from "./editUser";
+
 export default {
 	data: () => ({
 		search: "",
@@ -89,7 +91,8 @@ export default {
 		this.users = await this.getAllUsers();
 	},
 	components: {
-		userInfo
+		createUser,
+		edirUser
 	}
 };
 </script>
