@@ -5,6 +5,11 @@
 				Usuários
 				<div class="flex-grow-1"></div>
 				<v-text-field v-model="search" label="Buscar" append-icon="search" single-line hide-details></v-text-field>
+				<v-fab-transition>
+					<v-btn @click="openDialog()" color="success" fab dark small top right>
+						<v-icon>mdi-plus</v-icon>
+					</v-btn>
+				</v-fab-transition>
 			</v-card-title>
 			<v-data-table
 				:search="search"
@@ -19,12 +24,15 @@
 				</template>
 			</v-data-table>
 		</v-card>
+		<v-dialog persistent v-model="dialog" width="500">
+			<user-info v-if="dialog" @createUser="createUser" @close="closeDialog"></user-info>
+		</v-dialog>
 	</v-container>
 </template>
 
 <script>
 import urls from "../../urls";
-
+import userInfo from "./userInfo";
 export default {
 	data: () => ({
 		search: "",
@@ -34,7 +42,9 @@ export default {
 			{ text: "email", value: "apartament" },
 			{ text: "Actions", value: "action", sortable: false }
 		],
-		users: []
+		users: [],
+		dialog: false,
+		userEditData: {}
 	}),
 	methods: {
 		async getAllUsers() {
@@ -55,10 +65,31 @@ export default {
 		removeUserFromArray(user) {
 			const userIndex = this.users.indexOf(user);
 			this.users.splice(userIndex, 1);
+		},
+		closeDialog() {
+			this.dialog = false;
+		},
+		openDialog() {
+			this.dialog = true;
+		},
+		async createUser(userData) {
+			try {
+				this.closeDialog();
+				const response = await this.$http.post(urls.user.create, userData);
+				alert("Usuário criado com sucesso");
+				this.users = await this.getAllUsers();
+			} catch (error) {
+				error.response.data
+					? alert(error.response.data)
+					: alert("Não foi possível cadastrar");
+			}
 		}
 	},
 	async created() {
 		this.users = await this.getAllUsers();
+	},
+	components: {
+		userInfo
 	}
 };
 </script>

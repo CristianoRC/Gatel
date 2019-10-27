@@ -4,5 +4,6 @@ export default {
     getAll: `${apiUrl}/user`,
     getById: `${apiUrl}/user/@id`,
     delete: `${apiUrl}/user/@id`,
+    create: `${apiUrl}/user`,
   }
 }
