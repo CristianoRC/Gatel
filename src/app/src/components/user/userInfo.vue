@@ -20,6 +20,10 @@
 					label="Senha inicial"
 					required
 				></v-text-field>
+				<v-btn color="info" @click="generatePW" small flat>
+					Gerar senha aleatoria
+					<v-icon right dark>refresh</v-icon>
+				</v-btn>
 				<v-checkbox v-model="isAdmin" value="1" label="Admin" type="checkbox"></v-checkbox>
 			</v-form>
 		</v-card-text>
@@ -37,6 +41,7 @@
 
 <script>
 import rules from "../../rules";
+import generator from "random-password";
 
 export default {
 	data: () => {
@@ -65,6 +70,9 @@ export default {
 				phone: this.phone,
 				isAdmin: false
 			});
+		},
+		generatePW() {
+			this.password = generator(8);
 		}
 	}
 };
