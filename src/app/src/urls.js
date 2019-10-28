@@ -6,5 +6,8 @@ export default {
     delete: `${apiUrl}/user/@id`,
     edit: `${apiUrl}/user/@id`,
     create: `${apiUrl}/user`,
+  },
+  acessControll: {
+    verifyVehicle: `${apiUrl}/access`
   }
 }

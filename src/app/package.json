@@ -14,6 +14,7 @@
     "vue": "^2.6.10",
     "vue-router": "^3.1.3",
     "vue-the-mask": "^0.11.1",
+    "vue-web-cam": "^1.8.0",
     "vuetify": "^2.0.0"
   },
   "devDependencies": {

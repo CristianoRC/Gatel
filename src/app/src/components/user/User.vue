@@ -40,8 +40,8 @@
 
 <script>
 import urls from "../../urls";
-import createUser from "./createUser";
-import edirUser from "./editUser";
+import createUser from "./CreateUser";
+import edirUser from "./EditUser";
 
 export default {
 	data: () => ({
