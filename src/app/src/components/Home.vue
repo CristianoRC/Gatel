@@ -56,7 +56,9 @@ export default {
 	},
 	methods: {
 		capture() {
-			this.image = this.$refs.webcam.capture();
+			if (this.$refs.webcam != undefined) {
+				this.image = this.$refs.webcam.capture();
+			}
 			return this.image;
 		},
 		startWebcam() {
@@ -74,6 +76,11 @@ export default {
 		},
 		onCameras(cameras) {
 			this.devices = cameras;
+		},
+		capturewithInterval(interval) {
+			setInterval(() => {
+				this.capture();
+			}, interval);
 		}
 	},
 	watch: {
@@ -87,6 +94,9 @@ export default {
 				this.deviceId = first.deviceId;
 			}
 		}
+	},
+	created() {
+		this.capturewithInterval(2500);
 	}
 };
 </script>
