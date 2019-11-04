@@ -20,14 +20,12 @@ namespace Api
         [HttpPost]
         public async Task<IActionResult> VerifyAccess([FromBody] ImageBase64DTO dto)
         {
-            
             if (string.IsNullOrEmpty(dto.Image))
                 return Unauthorized();
 
-            if (await _accessBusiness.CarCanAccess(dto.Image))
-                return Ok();
-
-            return Unauthorized();
+            var userCanAccess = await _accessBusiness.CarCanAccess(dto.Image);
+            
+            return Ok(new {userCanAccess});
         }
     }
 }

@@ -8,7 +8,5 @@ namespace Business
         {
             throw new System.NotImplementedException();
         }
-        
-        
     }
 }
