@@ -41,6 +41,7 @@
 
 <script>
 import { WebCam } from "vue-web-cam";
+import urls from "../urls";
 
 export default {
 	components: {
@@ -51,6 +52,7 @@ export default {
 			image: null,
 			camera: null,
 			deviceId: null,
+			defaultImageData: "data:,",
 			devices: []
 		};
 	},
@@ -84,14 +86,25 @@ export default {
 		}
 	},
 	watch: {
-		camera: function(id) {
+		camera(id) {
 			this.deviceId = id;
 		},
-		devices: function() {
+		devices() {
 			const [first, ...tail] = this.devices;
 			if (first) {
 				this.camera = first.deviceId;
 				this.deviceId = first.deviceId;
+			}
+		},
+		async image(val) {
+			if (val !== this.defaultImageData) {
+				val = val.replace(/^data:image.+;base64,/, "");
+
+				const response = await this.$http.post(
+					urls.acessControll.verifyVehicle,
+					{ Image: val }
+				);
+				console.log(response);
 			}
 		}
 	},
