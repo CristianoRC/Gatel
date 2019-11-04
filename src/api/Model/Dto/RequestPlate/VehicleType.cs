@@ -1,6 +1,6 @@
 namespace Model.ValueObjects
 {
-    public class Vehicle
+    public class VehicleResponse
     {
         public string Type { get; set; }
     }

@@ -68,17 +68,20 @@
           <e p="CreateUserDTO.cs" t="Include" />
           <e p="CreateVehicleDTO.cs" t="Include" />
           <e p="ImageBase64DTO.cs" t="Include" />
+          <e p="RequestPlate" t="Include">
+            <e p="Box.cs" t="Include" />
+            <e p="ResponsePlateRecognizer.cs" t="Include" />
+            <e p="Result.cs" t="Include" />
+            <e p="VehicleType.cs" t="Include" />
+          </e>
           <e p="UpdateUserDTO.cs" t="Include" />
           <e p="UserQuery.cs" t="Include" />
         </e>
         <e p="Model.csproj" t="IncludeRecursive" />
         <e p="User.cs" t="Include" />
         <e p="ValueObjects" t="Include">
-          <e p="Box.cs" t="Include" />
           <e p="Email.cs" t="Include" />
           <e p="Plate.cs" t="Include" />
-          <e p="ResponsePlateRecognizer.cs" t="Include" />
-          <e p="Vehicle.cs" t="Include" />
         </e>
         <e p="Vehicle.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />

@@ -1,4 +1,4 @@
-namespace Model.ValueObjects
+namespace Model.Dto.RequestPlate
 {
     public class Box
     {

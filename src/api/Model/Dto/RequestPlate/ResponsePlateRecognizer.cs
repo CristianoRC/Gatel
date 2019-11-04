@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Model.ValueObjects
+namespace Model.Dto.RequestPlate
 {
     public class ResponsePlateRecognizer
     {
