@@ -31,4 +31,8 @@
     <Content Remove="User\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+
 </Project>

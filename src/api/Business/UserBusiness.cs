@@ -20,6 +20,7 @@ namespace Business
 
         public async Task Create(CreateUserDto userDto)
         {
+            //TODO: Validar se o usuário já foi excluido e quer apenas ser recriado
             var user = User.FromCreateDto(userDto);
             await _userRepository.Create(user);
         }

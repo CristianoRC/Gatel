@@ -11,6 +11,7 @@
     <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.0/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Api" t="IncludeRecursive">
+        <e p="AccessController.cs" t="Include" />
         <e p="Api.csproj" t="IncludeRecursive" />
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
@@ -31,8 +32,10 @@
         </e>
       </e>
       <e p="Business" t="IncludeRecursive">
+        <e p="AccessBusiness.cs" t="Include" />
         <e p="Business.csproj" t="IncludeRecursive" />
         <e p="BusinessDependencyInjection.cs" t="Include" />
+        <e p="IAccessBusiness.cs" t="Include" />
         <e p="IUserBusiness.cs" t="Include" />
         <e p="IVehicleBusiness.cs" t="Include" />
         <e p="UserBusiness.cs" t="Include" />
@@ -64,14 +67,18 @@
         <e p="Dto" t="Include">
           <e p="CreateUserDTO.cs" t="Include" />
           <e p="CreateVehicleDTO.cs" t="Include" />
+          <e p="ImageBase64DTO.cs" t="Include" />
           <e p="UpdateUserDTO.cs" t="Include" />
           <e p="UserQuery.cs" t="Include" />
         </e>
         <e p="Model.csproj" t="IncludeRecursive" />
         <e p="User.cs" t="Include" />
         <e p="ValueObjects" t="Include">
+          <e p="Box.cs" t="Include" />
           <e p="Email.cs" t="Include" />
           <e p="Plate.cs" t="Include" />
+          <e p="ResponsePlateRecognizer.cs" t="Include" />
+          <e p="Vehicle.cs" t="Include" />
         </e>
         <e p="Vehicle.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />

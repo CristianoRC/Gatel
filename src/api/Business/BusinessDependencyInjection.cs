@@ -8,6 +8,7 @@ namespace Business
         {
             services.AddTransient<IUserBusiness, UserBusiness>();
             services.AddTransient<IVehicleBusiness, VehicleBusiness>();
+            services.AddTransient<IAccessBusiness, AccessBusiness>();
         }
     }
 }
