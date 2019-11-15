@@ -1,3 +1,4 @@
+using Business.PlateRecognizer;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Business
@@ -9,6 +10,7 @@ namespace Business
             services.AddTransient<IUserBusiness, UserBusiness>();
             services.AddTransient<IVehicleBusiness, VehicleBusiness>();
             services.AddTransient<IAccessBusiness, AccessBusiness>();
+            services.AddTransient<IPlateRecognizer, PlateRecognizerBusiness>();
         }
     }
 }

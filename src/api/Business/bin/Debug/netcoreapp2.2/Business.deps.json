@@ -10,7 +10,8 @@
         "dependencies": {
           "Model": "1.0.0",
           "Repository": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0.0",
+          "Newtonsoft.Json": "9.0.0.0"
         },
         "runtime": {
           "Business.dll": {}
@@ -146,6 +147,14 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.0.18315"
+          }
+        }
+      },
+      "Newtonsoft.Json/9.0.0.0": {
+        "runtime": {
+          "Newtonsoft.Json.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1.19813"
           }
         }
       }
@@ -285,6 +294,11 @@
       "sha512": ""
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/2.2.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/9.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

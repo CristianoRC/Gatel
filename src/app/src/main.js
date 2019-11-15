@@ -11,6 +11,7 @@ Vue.config.productionTip = false
 Vue.use(vueRouter);
 Vue.use(VueTheMask)
 
+
 // ====== prototype ====== //
 Vue.prototype.$http = axios;
 

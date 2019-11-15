@@ -1,13 +1,13 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Exceptions;
 using Model.Dto.RequestPlate;
 using Newtonsoft.Json;
-using static System.Convert;
 
 namespace Business.PlateRecognizer
 {
@@ -24,42 +24,48 @@ namespace Business.PlateRecognizer
 
         public async Task<ResponsePlateRecognizer> GetPlate(string imageBase64)
         {
-            var formData = GetFormData(imageBase64);
+            var imagePath = CreatePhysicalFile(imageBase64);
 
-            using (var client = GetHttpClientConfigured())
+            using (var httpClient = new HttpClient())
             {
-                var responseData = await client.PostAsync(_requestUrl, formData);
-                var jsonContent = await responseData.Content.ReadAsStringAsync();
-
-                if (responseData.StatusCode == HttpStatusCode.OK)
+                using (var request = new HttpRequestMessage(new HttpMethod("POST"), _requestUrl))
                 {
-                    return ConvertRequestResponse(jsonContent);
-                }
+                    request.Headers.TryAddWithoutValidation("Authorization", $"Token {_requestToken}");
 
-                throw new InvalidPlateConversion(jsonContent);
+                    var multipartContent = new MultipartFormDataContent();
+                    multipartContent.Add(new ByteArrayContent(File.ReadAllBytes(imagePath)), "upload",
+                        Path.GetFileName(imagePath));
+                    multipartContent.Add(new StringContent("br"), "regions");
+                    request.Content = multipartContent;
+
+                    var response = await httpClient.SendAsync(request);
+
+                    DeletePhysicalFile(imagePath);
+
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<ResponsePlateRecognizer>(content);
+                }
             }
         }
 
-        private ResponsePlateRecognizer ConvertRequestResponse(string json)
+
+        private static string CreatePhysicalFile(string imageBase64)
         {
-            return JsonConvert.DeserializeObject<ResponsePlateRecognizer>(json);
+            var imageBytes = Convert.FromBase64String(imageBase64);
+            var imagePath = $"{Path.GetTempPath()}{Guid.NewGuid()}.jpg";
+
+            using (var imageFile = new FileStream(imagePath, FileMode.Create))
+            {
+                imageFile.Write(imageBytes, 0, imageBytes.Length);
+                imageFile.Flush();
+            }
+
+            return imagePath;
         }
 
-        private HttpClient GetHttpClientConfigured()
+        private static void DeletePhysicalFile(string filePath)
         {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", _requestToken);
-            return client;
-        }
-
-        private MultipartFormDataContent GetFormData(string imageBase64)
-        {
-            var image = FromBase64String(imageBase64);
-
-            var formData = new MultipartFormDataContent();
-            formData.Add(new StreamContent(new MemoryStream(image)), DateTime.Now.ToLongDateString(), "upload.jpg");
-
-            return formData;
+            File.Delete(filePath);
         }
     }
 }

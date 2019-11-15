@@ -1,6 +1,7 @@
 <template>
 	<v-container>
 		<v-layout text-center wrap>
+			<v-flex xs12>{{plate}}</v-flex>
 			<v-flex xs12>
 				<vue-web-cam
 					:device-id="deviceId"
@@ -8,8 +9,8 @@
 					@camera-change="onCameraChange"
 					@cameras="onCameras"
 					@error="onError"
-					height="100px"
-					width="100px"
+					height="500px"
+					width="500px"
 				/>
 			</v-flex>
 			<!-- Controle -->
@@ -53,6 +54,7 @@ export default {
 			camera: null,
 			deviceId: null,
 			defaultImageData: "data:,",
+			plate: "",
 			devices: []
 		};
 	},
@@ -104,12 +106,13 @@ export default {
 					urls.acessControll.verifyVehicle,
 					{ Image: val }
 				);
+
 				console.log(response);
 			}
 		}
 	},
 	created() {
-		this.capturewithInterval(2500);
+		// this.capturewithInterval(2500);
 	}
 };
 </script>
