@@ -50,7 +50,7 @@ export default {
 			{ text: "#", value: "id" },
 			{ text: "Nome", value: "name" },
 			{ text: "email", value: "apartament" },
-			{ text: "Actions", value: "action", sortable: false }
+			{ text: "", value: "action", sortable: false }
 		],
 		users: [],
 		dialogCreate: false,

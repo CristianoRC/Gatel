@@ -1,4 +1,4 @@
-const apiUrl = "https://localhost:5001/api"
+const apiUrl = "http://192.168.0.4:5000/api"
 export default {
   user: {
     getAll: `${apiUrl}/user`,
@@ -6,6 +6,11 @@ export default {
     delete: `${apiUrl}/user/@id`,
     edit: `${apiUrl}/user/@id`,
     create: `${apiUrl}/user`,
+  },
+  vehicle: {
+    getAll: `${apiUrl}/vehicle`,
+    create: `${apiUrl}/vehicle`,
+    edit: `${apiUrl}/vehicle/@plate`
   },
   acessControll: {
     verifyVehicle: `${apiUrl}/access`
