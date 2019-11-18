@@ -27,13 +27,21 @@
 		<v-dialog persistent v-model="dialogCreate" width="500">
 			<create-vehicle v-if="dialogCreate" @close="closeDialog" @createVehicle="createNewVehicle"></create-vehicle>
 		</v-dialog>
-		<v-dialog persistent v-model="dialogEdit" width="500"></v-dialog>
+		<v-dialog persistent v-model="dialogEdit" width="500">
+			<edit-vehicle
+				v-if="dialogEdit"
+				:vehicleData="vehicleEditData"
+				@close="closeDialog"
+				@editVehicle="editVehicleData"
+			></edit-vehicle>
+		</v-dialog>
 	</v-container>
 </template>
 
 <script>
 import urls from "../../urls";
 import createVehicle from "./CreateVehicle";
+import editVehicle from "./EditVehicle";
 
 export default {
 	data: () => ({
@@ -62,14 +70,15 @@ export default {
 			this.vehicleEditData = {};
 			this.dialogCreate = true;
 		},
+		openDialogEdit(vehicle) {
+			this.vehicleEditData = vehicle;
+			this.dialogEdit = true;
+		},
 		closeDialog() {
 			this.dialogCreate = false;
 			this.dialogEdit = false;
 		},
 		async createNewVehicle(data) {
-			console.clear();
-			console.log(data);
-
 			this.closeDialog();
 
 			try {
@@ -81,6 +90,8 @@ export default {
 					? alert(error.response.data)
 					: alert("Não foi possível cadastrar");
 			}
+
+			this.vehicles = await this.getAllVehicles();
 		},
 		async deleteVehicle(vehicle) {
 			const confirmMessage = "Você deseja deletar o Veículo?";
@@ -89,6 +100,22 @@ export default {
 					urls.vehicle.delete.replace("@plate", vehicle.plate.value)
 				);
 				this.removeUserFromArray(vehicle);
+			}
+		},
+		async editVehicleData(vehicleData) {
+			this.closeDialog();
+			try {
+				await this.$http.put(
+					urls.vehicle.edit.replace("@plate", vehicleData.plate),
+					vehicleData
+				);
+				alert("Veículo editado com sucesso");
+
+				this.vehicles = await this.getAllVehicles();
+			} catch (error) {
+				error.response.data
+					? alert(error.response.data)
+					: alert("Não foi possível editar");
 			}
 		},
 		removeUserFromArray(vehicle) {
@@ -100,7 +127,8 @@ export default {
 		this.vehicles = await this.getAllVehicles();
 	},
 	components: {
-		createVehicle
+		createVehicle,
+		editVehicle
 	}
 };
 </script>
