@@ -20,7 +20,7 @@
 			>
 				<template v-slot:item.action="{ item }">
 					<v-icon small class="mr-2" color="info" @click="openDialogEdit(item)">edit</v-icon>
-					<v-icon small color="error" @click="deleteUser(item)">delete</v-icon>
+					<v-icon small color="error" @click="deleteVehicle(item)">delete</v-icon>
 				</template>
 			</v-data-table>
 		</v-card>
@@ -39,10 +39,9 @@ export default {
 	data: () => ({
 		search: "",
 		headers: [
-			{ text: "Placa", value: "plate" },
+			{ text: "Placa", value: "plate.value" },
 			{ text: "Modelo", value: "model" },
 			{ text: "Cor", value: "color" },
-			{ text: "Dono", value: "clientId" },
 			{ text: "", value: "action", sortable: false }
 		],
 		vehicles: [],
@@ -82,6 +81,19 @@ export default {
 					? alert(error.response.data)
 					: alert("Não foi possível cadastrar");
 			}
+		},
+		async deleteVehicle(vehicle) {
+			const confirmMessage = "Você deseja deletar o Veículo?";
+			if (confirm(confirmMessage)) {
+				await this.$http.delete(
+					urls.vehicle.delete.replace("@plate", vehicle.plate.value)
+				);
+				this.removeUserFromArray(vehicle);
+			}
+		},
+		removeUserFromArray(vehicle) {
+			const vehicleIndex = this.vehicles.indexOf(vehicle);
+			this.vehicles.splice(vehicleIndex, 1);
 		}
 	},
 	async created() {

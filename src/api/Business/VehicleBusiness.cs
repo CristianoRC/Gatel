@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 using Model.Dto;
@@ -29,6 +30,11 @@ namespace Business
         public async Task DeleteVehicle(string plate)
         {
             await _vehicleRepository.DeleteVehicle(new Plate(plate));
+        }
+
+        public async Task<IEnumerable<Vehicle>> GetAll()
+        {
+            return await _vehicleRepository.GetAll();
         }
     }
 }

@@ -24,6 +24,8 @@ namespace Business.PlateRecognizer
 
         public async Task<ResponsePlateRecognizer> GetPlate(string imageBase64)
         {
+            
+            //TODO: Remover a criação do arquivo físoc, e usar apenas o local
             var imagePath = CreatePhysicalFile(imageBase64);
 
             using (var httpClient = new HttpClient())

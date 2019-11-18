@@ -21,6 +21,9 @@ namespace Api
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateVehicleDTO dto)
         {
+            dto.UserId = 1; //TODO: Corrigir quando tiver autenticação
+
+
             try
             {
                 await _vehicleBusiness.CreateVehicle(dto);
@@ -48,6 +51,12 @@ namespace Api
             {
                 return BadRequest("A plca informada não está correta!");
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await _vehicleBusiness.GetAll());
         }
     }
 }

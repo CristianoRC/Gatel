@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Model;
 using Model.Dto;
 
 namespace Business
@@ -7,5 +9,7 @@ namespace Business
     {
         Task CreateVehicle(CreateVehicleDTO vehicleDto);
         Task DeleteVehicle(string plate);
+
+        Task<IEnumerable<Vehicle>> GetAll();
     }
 }
