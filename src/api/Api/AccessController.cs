@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Business;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@ namespace Api
     public class AccessController : Controller
     {
         private readonly IAccessBusiness _accessBusiness;
+        private readonly IGateControl _gateControl;
 
-        public AccessController(IAccessBusiness accessBusiness)
+        public AccessController(IAccessBusiness accessBusiness, IGateControl gateControl)
         {
             _accessBusiness = accessBusiness;
+            _gateControl = gateControl;
         }
 
         [HttpPost]
@@ -24,7 +27,12 @@ namespace Api
                 return Unauthorized();
 
             var userCanAccess = await _accessBusiness.CarCanAccess(dto.Image);
-            
+
+            if (userCanAccess)
+            {
+                _gateControl.Open();
+            }
+
             return Ok(new {userCanAccess});
         }
     }

@@ -11,5 +11,6 @@ namespace Business
         Task DeleteVehicle(string plate);
 
         Task<IEnumerable<Vehicle>> GetAll();
+        Task<bool> VehicleExists(string plate);
     }
 }

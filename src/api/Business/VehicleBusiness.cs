@@ -36,5 +36,13 @@ namespace Business
         {
             return await _vehicleRepository.GetAll();
         }
+
+        public async Task<bool> VehicleExists(string plate)
+        {
+            if (string.IsNullOrEmpty(plate))
+                return false;
+
+            return await _vehicleRepository.VehicleExists(plate);
+        }
     }
 }

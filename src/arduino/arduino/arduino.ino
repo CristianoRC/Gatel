@@ -8,7 +8,8 @@ int led = 7;
 void setup() {
   pinMode(led, OUTPUT);
   servoMotor.attach(9);
-  
+  servoMotor.write(0);
+
   Serial.begin(9600);
   Serial.println("Comunicacao serial efetuada com sucesso com Arduino Uno!");
 }
@@ -21,21 +22,24 @@ void loop() {
   {
     turnLedOn();
     openGate();
-  }
-  else if(resultadoSerial == '0') {
+    delay(2500);
     turnLedOff();
     closeGate();
-  }  
+  }
+  else if (resultadoSerial == '0') {
+    turnLedOff();
+    closeGate();
+  }
 }
 
 void turnLedOn() {
   digitalWrite(led, HIGH);
-  delay(500);
+  delay(50);
 }
 
 void turnLedOff() {
   digitalWrite(led, LOW);
-  delay(500);
+  delay(50);
 }
 
 void openGate() {

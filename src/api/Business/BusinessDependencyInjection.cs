@@ -11,6 +11,7 @@ namespace Business
             services.AddTransient<IVehicleBusiness, VehicleBusiness>();
             services.AddTransient<IAccessBusiness, AccessBusiness>();
             services.AddTransient<IPlateRecognizer, PlateRecognizerBusiness>();
+            services.AddTransient<IGateControl, GateControl>();
         }
     }
 }

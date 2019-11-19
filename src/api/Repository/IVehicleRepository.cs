@@ -10,5 +10,6 @@ namespace Repository
         Task CreateVehicle(Vehicle vehicle);
         Task DeleteVehicle(Plate plate);
         Task<IEnumerable<Vehicle>> GetAll();
+        Task<bool> VehicleExists(string plate);
     }
 }

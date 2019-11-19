@@ -16,6 +16,7 @@ namespace Repository
         private readonly string _deleteVehicle;
         private readonly string _deleteUserVehicle;
         private readonly string _getAll;
+        private readonly string _exists;
 
         public VehicleRepository()
         {
@@ -24,6 +25,7 @@ namespace Repository
             _deleteVehicle = "update vehicle set isDeleted = true where plate = @plate";
             _deleteUserVehicle = "delete from users_vehicles where plate = @plate";
             _getAll = "select * from vehicle where IsDeleted = false";
+            _exists = "select count(*) from vehicle where UPPER(plate) = @plate and IsDeleted = false";
         }
 
         public async Task CreateVehicle(Vehicle vehicle)
@@ -78,6 +80,19 @@ namespace Repository
             }
 
             return result;
+        }
+
+        public async Task<bool> VehicleExists(string plate)
+        {
+            var quantity = 0;
+            using (var connection = GetConnection())
+            {
+                await connection.OpenAsync();
+
+                quantity = await connection.QueryFirstAsync<int>(_exists, new {plate = plate.ToUpper()});
+            }
+
+            return quantity != 0;
         }
     }
 }

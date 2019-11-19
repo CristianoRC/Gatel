@@ -106,8 +106,7 @@ export default {
 					urls.acessControll.verifyVehicle,
 					{ Image: val }
 				);
-
-				console.log(response);
+				console.log(response.data);
 			}
 		}
 	},

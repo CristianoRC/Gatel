@@ -33,9 +33,12 @@
       </e>
       <e p="Business" t="IncludeRecursive">
         <e p="AccessBusiness.cs" t="Include" />
+        <e p="BashHelper.cs" t="Include" />
         <e p="Business.csproj" t="IncludeRecursive" />
         <e p="BusinessDependencyInjection.cs" t="Include" />
+        <e p="GateControl.cs" t="Include" />
         <e p="IAccessBusiness.cs" t="Include" />
+        <e p="IGateControl.cs" t="Include" />
         <e p="IUserBusiness.cs" t="Include" />
         <e p="IVehicleBusiness.cs" t="Include" />
         <e p="PlateRecognizer" t="Include">
