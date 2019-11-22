@@ -1,6 +1,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Business.PlateRecognizer;
+using Model.ValueObjects;
+using Repository;
 
 namespace Business
 {
@@ -8,11 +10,14 @@ namespace Business
     {
         private readonly IPlateRecognizer _plateRecognizer;
         private readonly IVehicleBusiness _vehicleBusiness;
+        private readonly IAccessRepository _accessRepository;
 
-        public AccessBusiness(IPlateRecognizer plateRecognizer, IVehicleBusiness vehicleBusiness)
+        public AccessBusiness(IPlateRecognizer plateRecognizer, IVehicleBusiness vehicleBusiness,
+            IAccessRepository accessRepository)
         {
             _plateRecognizer = plateRecognizer;
             _vehicleBusiness = vehicleBusiness;
+            _accessRepository = accessRepository;
         }
 
         public async Task<bool> CarCanAccess(string imageBase64)
@@ -21,12 +26,14 @@ namespace Business
 
             if (conversionData.Results.Any())
             {
-                var plate = conversionData.Results.First().Plate;
+                var ocrResult = conversionData.Results.First();
 
-                if (plate.Length == 7)
-                    plate = $"{plate.Substring(0, 3)}-{plate.Substring(3, 4)}";
+                var userCanAccess = await _vehicleBusiness.VehicleExists(ocrResult.FormattedPlate);
 
-                return await _vehicleBusiness.VehicleExists(plate);
+                if (userCanAccess)
+                    await _accessRepository.RegisterAccess(ocrResult.FormattedPlate);
+                
+                return true;
             }
 
             return false;

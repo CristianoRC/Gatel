@@ -8,6 +8,7 @@ namespace Repository
         {
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IVehicleRepository, VehicleRepository>();
+            services.AddTransient<IAccessRepository, AccessRepository>();
         }
     }
 }

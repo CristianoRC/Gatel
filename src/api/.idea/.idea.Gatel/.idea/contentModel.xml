@@ -102,7 +102,9 @@
         </e>
       </e>
       <e p="Repository" t="IncludeRecursive">
+        <e p="AccessRepository.cs" t="Include" />
         <e p="BaseRepository.cs" t="Include" />
+        <e p="IAccessRepository.cs" t="Include" />
         <e p="IUserRepository.cs" t="Include" />
         <e p="IVehicleRepository.cs" t="Include" />
         <e p="Repository.csproj" t="IncludeRecursive" />
