@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v2.2": {
       "Business/1.0.0": {
         "dependencies": {
+          "BCrypt.Net-Next": "3.2.1",
           "Model": "1.0.0",
           "Repository": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0.0",
@@ -15,6 +16,14 @@
         },
         "runtime": {
           "Business.dll": {}
+        }
+      },
+      "BCrypt.Net-Next/3.2.1": {
+        "runtime": {
+          "lib/netstandard2.0/BCrypt.Net-Next.dll": {
+            "assemblyVersion": "3.2.1.0",
+            "fileVersion": "3.2.1.0"
+          }
         }
       },
       "Dapper/2.0.4": {
@@ -165,6 +174,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "BCrypt.Net-Next/3.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tu4GTLU2QMeWxJZP/WDtiVK98QjvUqGABctT9XLKbIFJrp8ETMA3igWKdkZVkRunikBhWao6o3EsrbDWxPyaSw==",
+      "path": "bcrypt.net-next/3.2.1",
+      "hashPath": "bcrypt.net-next.3.2.1.nupkg.sha512"
     },
     "Dapper/2.0.4": {
       "type": "package",

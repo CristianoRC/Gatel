@@ -21,7 +21,9 @@ namespace Business
         public async Task Create(CreateUserDto userDto)
         {
             //TODO: Validar se o usuário já foi excluido e quer apenas ser recriado
+
             var user = User.FromCreateDto(userDto);
+            user.PassWord = BCrypt.Net.BCrypt.HashPassword(user.PassWord);
             await _userRepository.Create(user);
         }
 
