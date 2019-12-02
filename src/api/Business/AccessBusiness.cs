@@ -31,9 +31,13 @@ namespace Business
                 var userCanAccess = await _vehicleBusiness.VehicleExists(ocrResult.FormattedPlate);
 
                 if (userCanAccess)
+                {
                     await _accessRepository.RegisterAccess(ocrResult.FormattedPlate);
-                
-                return true;
+                    return true;
+                }
+
+
+                return false;
             }
 
             return false;
