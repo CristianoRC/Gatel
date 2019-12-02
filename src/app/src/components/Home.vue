@@ -110,8 +110,7 @@ export default {
 			}
 		}
 	},
-	created() {
-		// this.capturewithInterval(2500);
-	}
+	created() {}
+	// this.capturewithInterval(2500);
 };
 </script>

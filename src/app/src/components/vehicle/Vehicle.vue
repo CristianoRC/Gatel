@@ -2,7 +2,7 @@
 	<v-container grid-list-xs>
 		<v-card>
 			<v-card-title>
-				Usuários
+				Veículos
 				<div class="flex-grow-1"></div>
 				<v-text-field v-model="search" label="Buscar" append-icon="search" single-line hide-details></v-text-field>
 				<v-fab-transition>
