@@ -201,6 +201,7 @@
       "Business/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "3.2.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
           "Model": "1.0.0",
           "Repository": "1.0.0"
         },
@@ -233,6 +234,7 @@
       "Repository/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.4",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
           "Model": "1.0.0",
           "Npgsql": "4.1.0-preview1"
         },
@@ -3442,7 +3444,7 @@
     "Microsoft.Bcl.AsyncInterfaces/1.0.0-preview7.19362.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0RtowLXz+O2Vb/zjAFF1tvQExWMYvxbU/O/bp/MtrBI9T5+OGq/UqxL//b4RFxZ+92QfWR4T46QGYRqZTTTePg==",
+      "sha512": "sha512-2VodOQ1r9SaLhfRV4BqJC9bTc00t2wkEU3oXFsM47NxPA+KWdjBTU+ZCrHD4I4smC4870ArrYiO15VB7T39sUw==",
       "path": "microsoft.bcl.asyncinterfaces/1.0.0-preview7.19362.9",
       "hashPath": "microsoft.bcl.asyncinterfaces.1.0.0-preview7.19362.9.nupkg.sha512"
     },
@@ -3498,21 +3500,21 @@
     "System.Runtime.CompilerServices.Unsafe/4.6.0-preview7.19362.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-A5bZG9tJ9uawXa+ZVr4Q6Fdqymq4+M2YNmhw9pprvsCpspe3/jKusBYgq6CoPZiEJnAHXlBqvKC44pYQomd8Lw==",
+      "sha512": "sha512-M0ayC8Ij2/AsHi/jCL6PYcjxE+a4Ud7qGMhQxYDmn/5hTJS7DEfKiK30vPf81PHb6Mjv49D0eQVxY9gfve1+gg==",
       "path": "system.runtime.compilerservices.unsafe/4.6.0-preview7.19362.9",
       "hashPath": "system.runtime.compilerservices.unsafe.4.6.0-preview7.19362.9.nupkg.sha512"
     },
     "System.Text.Json/4.6.0-preview7.19362.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3FubAcGX1x1EYBlgbXU/O6rmvmCt8f11LsUgRRXaLKjlVavyelvA43pHwWeycNidnQo4HgQPeW/2ci2Z3Fe0lg==",
+      "sha512": "sha512-KRloMMjnWCasJ6ojjS3BQa40S1SGVx3gWGjJ3UKjGhjsh/naRUULmsnBEmccX2gGvWJylLDW3o3N8Ye27XsB2g==",
       "path": "system.text.json/4.6.0-preview7.19362.9",
       "hashPath": "system.text.json.4.6.0-preview7.19362.9.nupkg.sha512"
     },
     "System.Threading.Tasks.Extensions/4.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5HCu8V3QB+gouMZmGrA666weZ0UQRt+OTD16rSE3Hyhu4Qhlvxkf4nTPI0GLy52s0rxgi7C8t2ayFAzw7UK1og==",
+      "sha512": "sha512-BG/TNxDFv0svAzx8OiMXDlsHfGw623BZ8tCXw4YLhDFDvDhNUEV58jKYMGRnkbJNm7c3JNNJDiN7JBMzxRBR2w==",
       "path": "system.threading.tasks.extensions/4.5.2",
       "hashPath": "system.threading.tasks.extensions.4.5.2.nupkg.sha512"
     },
@@ -4806,7 +4808,7 @@
     "runtime.native.System.IO.Compression/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-b+V9JC/Ii3sR659flBeaBJww111425tgjcDS1k+hqV4sGh9FALRDBvJnDtQ895gAzpPTUOFDHdqaZ2Et7BpZMg==",
+      "sha512": "sha512-INBPonS5QPEgn7naufQFXJEp3zX6L4bwHgJ/ZH78aBTpeNfQMtf7C6VrAFhlq2xxWBveIOWyFzQjJ8XzHMhdOQ==",
       "path": "runtime.native.system.io.compression/4.3.0",
       "hashPath": "runtime.native.system.io.compression.4.3.0.nupkg.sha512"
     },
@@ -4862,7 +4864,7 @@
     "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-T5NvFgmHX0WH4c7lP72krsnk+IJI10vJf2j2twGE+5QBRA4RyRAgD+ZjEgdmpLOjW4B+nZGaadewTCUcR899OQ==",
+      "sha512": "sha512-nyFNiCk/r+VOiIqreLix8yN+q3Wga9+SE8BCgkf+2BwEKiNx6DyvFjCgkfV743/grxv8jHJ8gUK4XEQw7yzRYg==",
       "path": "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "hashPath": "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512"
     },
@@ -4946,7 +4948,7 @@
     "System.Collections.NonGeneric/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LE/oChpRvkSi3U25u0KnJcI44JeDZ1QJCyN4qFDx2uusEypdqR24w7lKYw21eYe5esuCBuc862wRmpF63Yy1KQ==",
+      "sha512": "sha512-prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
       "path": "system.collections.nongeneric/4.3.0",
       "hashPath": "system.collections.nongeneric.4.3.0.nupkg.sha512"
     },
